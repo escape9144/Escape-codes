@@ -9,34 +9,77 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin-top: 50px;
-            background-color: #2D2D2D;
-            
+            background-color: #2D2D2D; /* Dark Grey */
+            color: #E0E0E0; /* Light Grey Text */
+        }
+        h1 {
+            color: #ffffff; /* White */
+        }
+        #panel-title {
+            font-size: 35px;
+            font-weight: bold;
+            margin-bottom: 20px;
         }
         #code-box {
             font-size: 30px;
             font-weight: bold;
-            color: #ff0000;
+            color: #ff4444; /* Bright Red */
+            background-color: #3A3A3A; /* Slightly lighter grey */
+            padding: 15px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        #discord-link {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        #discord-link a {
+            background-color: #5865F2; /* Discord blue */
+            padding: 10px 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        #discord-link img {
+            width: 30px;
+            margin-right: 10px;
         }
     </style>
 </head>
 <body>
 
+    <h1 id="panel-title">ESCAPE FREE PANEL</h1>
+
     <h1>Current Access Code:</h1>
     <div id="code-box">Loading...</div>
 
+    <!-- Discord Link Button -->
+    <div id="discord-link">
+        <a href="https://discord.gg/X3BpJPs7h6" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
+            Join Our Discord
+        </a>
+    </div>
+
     <script>
         async function fetchCode() {
-        try {
-            let response = await fetch("code.json?t=" + new Date().getTime()); // Prevent caching
-            let data = await response.json();
-            document.getElementById("code-box").innerText = data.code; // Update the code display
-        } catch (error) {
-            document.getElementById("code-box").innerText = "Error loading code";
+            try {
+                let response = await fetch("code.json?t=" + new Date().getTime()); // Prevent caching
+                let data = await response.json();
+                document.getElementById("code-box").innerText = data.code; // Update the code display
+            } catch (error) {
+                document.getElementById("code-box").innerText = "Error loading code";
+            }
         }
-    }
 
-    fetchCode(); // Load code on page open
-    setInterval(fetchCode, 10000); // Refresh every 10 seconds
+        fetchCode(); // Load code on page open
+        setInterval(fetchCode, 10000); // Refresh every 10 seconds
     </script>
 
 </body>
