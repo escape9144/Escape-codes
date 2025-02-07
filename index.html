@@ -9,33 +9,30 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 0;
-            background-color: #2D2D2D; /* Dark Grey */
-            color: #E0E0E0; /* Light Grey Text */
+            background-color: #2D2D2D;
+            color: #E0E0E0;
         }
         
-        /* Navbar Styles */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 10px 20px;
-            background-color: #1F1F1F; /* Darker Grey */
+            background-color: #1F1F1F;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
             position: relative;
         }
-        /* Glowing Bottom Effect */
         .navbar::after {
             content: "";
             position: absolute;
             bottom: -5px;
             left: 0;
             width: 100%;
-            height: 4px;
+            height: 6px;
             background: linear-gradient(90deg, #ff4444, #ffbb33, #00ffcc);
-            box-shadow: 0px 0px 10px #ff4444;
+            filter: blur(10px);
             border-radius: 5px;
         }
-
         .navbar h1 {
             color: white;
             margin: 0;
@@ -53,18 +50,14 @@
             transform: scale(1.2);
             filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.8));
         }
-
-        /* Main Content */
         #main-content {
             margin-top: 50px;
         }
-
-        /* Glowing Code Box */
         #code-box {
             font-size: 30px;
             font-weight: bold;
-            color: #ff4444; /* Bright Red */
-            background-color: #3A3A3A; /* Slightly lighter grey */
+            color: #ff4444;
+            background-color: #3A3A3A;
             padding: 20px;
             border-radius: 10px;
             display: inline-block;
@@ -74,12 +67,26 @@
         #code-box:hover {
             box-shadow: 0px 0px 20px rgba(255, 68, 68, 1), 0px 0px 30px rgba(255, 187, 51, 0.8);
         }
-
+        #download-button {
+            margin-top: 40px;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            background-color: #ff4444;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0px 0px 10px rgba(255, 68, 68, 0.8);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        #download-button:hover {
+            background-color: #ff2222;
+            box-shadow: 0px 0px 20px rgba(255, 68, 68, 1);
+        }
     </style>
 </head>
 <body>
-
-    <!-- Navbar -->
     <div class="navbar">
         <h1>Escape Cheats</h1>
         <div class="social-icons">
@@ -89,29 +96,26 @@
             <a href="https://discord.gg/X3BpJPs7h6" target="_blank">
                 <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
             </a>
-        </div>
+                   </div>
     </div>
-
-    <!-- Main Content -->
     <div id="main-content">
         <h1>Current Access Code:</h1>
         <div id="code-box">Loading...</div>
+        <br>
+        <button id="download-button" onclick="window.location.href='https://mega.nz/YOUR_LINK_HERE'">Download Latest Panel</button>
     </div>
-
     <script>
         async function fetchCode() {
             try {
-                let response = await fetch("code.json?t=" + new Date().getTime()); // Prevent caching
+                let response = await fetch("code.json?t=" + new Date().getTime());
                 let data = await response.json();
-                document.getElementById("code-box").innerText = data.code; // Update the code display
+                document.getElementById("code-box").innerText = data.code;
             } catch (error) {
                 document.getElementById("code-box").innerText = "Error loading code";
             }
         }
-
-        fetchCode(); // Load code on page open
-        setInterval(fetchCode, 10000); // Refresh every 10 seconds
+        fetchCode();
+        setInterval(fetchCode, 10000);
     </script>
-
 </body>
 </html>
