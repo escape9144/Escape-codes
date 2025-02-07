@@ -68,7 +68,7 @@
             box-shadow: 0px 0px 20px rgba(255, 68, 68, 1), 0px 0px 30px rgba(255, 187, 51, 0.8);
         }
         #download-button {
-            margin-top: 40px;
+            margin-top: 20px;
             padding: 15px 30px;
             font-size: 18px;
             font-weight: bold;
@@ -80,6 +80,8 @@
             box-shadow: 0px 0px 10px rgba(255, 68, 68, 0.8);
             transition: background-color 0.3s, box-shadow 0.3s;
             display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
         #download-button:hover {
             background-color: #ff2222;
@@ -107,7 +109,6 @@
     <div id="main-content">
         <h1>Current Access Code:</h1>
         <div id="code-box">Loading...</div>
-        <br>
         <button id="download-button" onclick="window.location.href='https://mega.nz/folder/qJUmWSLZ#KY9uFQq5dwPg7ZWsAPs-hQ'">Download Latest Panel</button>
         <p id="update-time">Last updated: Fetching...</p>
     </div>
@@ -122,19 +123,8 @@
             }
         }
         
-        async function fetchUpdateTime() {
-            try {
-                let response = await fetch("update.json?t=" + new Date().getTime());
-                let data = await response.json();
-                document.getElementById("update-time").innerText = "Last updated: " + data.lastUpdated;
-            } catch (error) {
-                document.getElementById("update-time").innerText = "Last updated: Error fetching update time";
-            }
-        }
-        
         fetchCode();
         setInterval(fetchCode, 10000);
-        fetchUpdateTime();
     </script>
 </body>
 </html>
