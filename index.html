@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Code</title>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; margin-top: 50px; }
+        .code-box { font-size: 40px; font-weight: bold; padding: 20px; border: 3px solid #000; display: inline-block; }
+    </style>
+    <script>
+        function generateCode() {
+            const now = Math.floor(Date.now() / 1000 / 120); // Change every 2 min
+            const seed = now % 10000; // Keep it a 4-digit number
+            const randomCode = (1000 + (seed * 32719) % 9000).toString(); // Generate code
+            document.getElementById("code").innerText = randomCode;
+            localStorage.setItem("latestCode", randomCode);
+        }
+
+        function updateCode() {
+            generateCode();
+            setInterval(generateCode, 120000); // Refresh every 2 min
+        }
+
+        function serveCode() {
+            const url = new URL(window.location.href);
+            if (url.pathname === "/code") {
+                document.body.innerHTML = JSON.stringify({ code: localStorage.getItem("latestCode") || "0000" });
+            }
+        }
+
+        window.onload = () => {
+            updateCode();
+            serveCode();
+        };
+    </script>
+</head>
+<body>
+    <h2>Enter this code in the app:</h2>
+    <div class="code-box" id="code">0000</div>
+</body>
+</html>
