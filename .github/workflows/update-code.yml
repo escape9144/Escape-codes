@@ -17,12 +17,13 @@ jobs:
       - name: Generate new 4-digit code
         run: |
           CODE=$(shuf -i 1000-9999 -n 1)  # Generate a random 4-digit code
-          echo "{ \"code\": \"$CODE\" }" > code.json  # Save to file
+          echo "{ \"code\": \"$CODE\" }" > code.json  # Save new random code to file
+          echo "Generated Code: $CODE"
 
       - name: Commit and push changes
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git add code.json
-          git commit -m "Updated code.json with new code"
+          git commit -m "Updated code.json with new random code $(date +'%H:%M:%S')" || exit 0
           git push
