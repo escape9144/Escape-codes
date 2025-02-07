@@ -3,23 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Code</title>
+    <title>Escape Cheats - Live Code</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            margin-top: 50px;
+            margin: 0;
             background-color: #2D2D2D; /* Dark Grey */
             color: #E0E0E0; /* Light Grey Text */
         }
-        h1 {
-            color: #ffffff; /* White */
+        
+        /* Navbar Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #1F1F1F; /* Darker Grey */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
         }
-        #panel-title {
-            font-size: 35px;
-            font-weight: bold;
-            margin-bottom: 20px;
+        .navbar h1 {
+            color: white;
+            margin: 0;
+            font-size: 24px;
         }
+        .social-icons a {
+            margin-left: 15px;
+            text-decoration: none;
+        }
+        .social-icons img {
+            width: 30px;
+            transition: transform 0.2s;
+        }
+        .social-icons img:hover {
+            transform: scale(1.2);
+        }
+
+        /* Main Content */
+        #main-content {
+            margin-top: 50px;
+        }
+        
         #code-box {
             font-size: 30px;
             font-weight: bold;
@@ -30,41 +54,31 @@
             display: inline-block;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
         }
-        #discord-link {
-            display: flex;
-            justify-content: center;
-            margin-top: 40px;
-        }
-        #discord-link a {
-            background-color: #5865F2; /* Discord blue */
-            padding: 10px 15px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-        }
-        #discord-link img {
-            width: 30px;
-            margin-right: 10px;
-        }
+
     </style>
 </head>
 <body>
 
-    <h1 id="panel-title">ESCAPE FREE PANEL</h1>
+    <!-- Navbar -->
+    <div class="navbar">
+        <h1>Escape Cheats</h1>
+        <div class="social-icons">
+            <a href="https://www.youtube.com" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
+            </a>
+            <a href="https://discord.gg/X3BpJPs7h6" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
+            </a>
+            <a href="https://github.com/escape9144" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733609.png" alt="GitHub">
+            </a>
+        </div>
+    </div>
 
-    <h1>Current Access Code:</h1>
-    <div id="code-box">Loading...</div>
-
-    <!-- Discord Link Button -->
-    <div id="discord-link">
-        <a href="https://discord.gg/X3BpJPs7h6" target="_blank">
-            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
-            Join Our Discord
-        </a>
+    <!-- Main Content -->
+    <div id="main-content">
+        <h1>Current Access Code:</h1>
+        <div id="code-box">Loading...</div>
     </div>
 
     <script>
