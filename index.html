@@ -12,7 +12,7 @@
             background-color: #2D2D2D;
             color: #E0E0E0;
         }
-        
+
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -50,9 +50,20 @@
             transform: scale(1.2);
             filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.8));
         }
+
         #main-content {
             margin-top: 50px;
         }
+
+        /* Centering the code box and download button */
+        #code-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
         #code-box {
             font-size: 30px;
             font-weight: bold;
@@ -60,15 +71,14 @@
             background-color: #3A3A3A;
             padding: 20px;
             border-radius: 10px;
-            display: inline-block;
             box-shadow: 0px 0px 15px rgba(255, 68, 68, 0.8);
             transition: box-shadow 0.3s ease-in-out;
         }
         #code-box:hover {
             box-shadow: 0px 0px 20px rgba(255, 68, 68, 1), 0px 0px 30px rgba(255, 187, 51, 0.8);
         }
+
         #download-button {
-            margin-top: 20px;
             padding: 15px 30px;
             font-size: 18px;
             font-weight: bold;
@@ -79,14 +89,12 @@
             cursor: pointer;
             box-shadow: 0px 0px 10px rgba(255, 68, 68, 0.8);
             transition: background-color 0.3s, box-shadow 0.3s;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
         }
         #download-button:hover {
             background-color: #ff2222;
             box-shadow: 0px 0px 20px rgba(255, 68, 68, 1);
         }
+
         #update-time {
             margin-top: 20px;
             font-size: 16px;
@@ -106,12 +114,21 @@
             </a>
         </div>
     </div>
+
     <div id="main-content">
         <h1>Current Access Code:</h1>
-        <div id="code-box">Loading...</div>
-        <button id="download-button" onclick="window.location.href='https://mega.nz/folder/qJUmWSLZ#KY9uFQq5dwPg7ZWsAPs-hQ'">Download Latest Panel</button>
+        
+        <!-- Centered Code Box & Download Button -->
+        <div id="code-container">
+            <div id="code-box">Loading...</div>
+            <button id="download-button" onclick="window.location.href='https://mega.nz/folder/qJUmWSLZ#KY9uFQq5dwPg7ZWsAPs-hQ'">
+                Download Latest Panel
+            </button>
+        </div>
+
         <p id="update-time">Last updated: Fetching...</p>
     </div>
+
     <script>
         async function fetchCode() {
             try {
@@ -122,7 +139,7 @@
                 document.getElementById("code-box").innerText = "Error loading code";
             }
         }
-        
+
         fetchCode();
         setInterval(fetchCode, 10000);
     </script>
